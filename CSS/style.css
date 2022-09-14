@@ -1,0 +1,68 @@
+/* * Fuentes */
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap");
+
+.container {
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    padding: 2.5% 5%;
+}
+
+h1 {
+    border-radius: 10px;
+}
+
+h2,
+h1 {
+    text-align: center;
+    padding: 2.5% 5%;
+    display: block;
+    margin: 10px;
+    /*background-color: #142d31;*/
+}
+
+#main-container {
+    background-color: #2c3333;
+}
+
+.container__option {
+    border: 3px solid #222;
+    display: inline-block;
+    background-color: #395b64;
+    padding: 10px;
+    width: 95%;
+    margin: 2.5% 1.75%;
+    text-align: center;
+    border-radius: 10px;
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+}
+
+* {
+    color: #f5f2e7;
+    font-family: "Open Sans", sans-serif;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+}
+
+input,
+select {
+    text-align: center;
+    background-color: #2c3333;
+    margin: 10px;
+    border: 1px solid #eee;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+input:hover,
+select:hover,
+input:focus {
+    background-color: #181c1c;
+    border: 1px solid #222;
+    transition: 1.5s;
+}

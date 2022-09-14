@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Subneteo</title>
+        <link rel="stylesheet" href="./CSS/normalize.css" />
+        <link rel="stylesheet" type="text/css" href="./CSS/style.css" />
+    </head>
+    <body>
+        <div class="container" id="main-container">
+            <h1>Subneteo - AYAR</h1>
+            <div class="container__option" id="Option1">
+                <h2>1. Conversor a IP Binaria</h2>
+                <label for="IPDecimal-R1">IP Decimal:</label>
+                <input type="text" name="IPDecimal-R1" id="IPDecimal-R1" />
+                <p id="IPBinaria-R1"></p>
+                <input type="button" value="Convertir" onclick="Ex1();" />
+            </div>
+            <div class="container__option">
+                <h2>Subneteo por Hosteos</h2>
+            </div>
+            <div class="container__option">
+                <h2>3. Subneteo por Subredes</h2>
+                <label for="IPDecimal-R2">IP: </label>
+                <input type="text" name="" id="IPDecimal-R2" />
+                <label for="NumRedes-R2">Numero de Redes: </label>
+                <input type="text" name="NumRedes-R2" id="NumRedes-R2" />
+                <table id="TablaEx3"></table>
+                <input type="button" value="Subnetear" onclick="Ex3();" />
+            </div>
+            <div class="container__option">
+                <h2>Titulo4</h2>
+            </div>
+        </div>
+
+        <!-- * JavaScript-->
+        <script src="./JS/script.js"></script>
+        <script>
+            // Conversion a Binario
+            function Ex1() {
+                // Variables
+                let IPDecimal = document.getElementById("IPDecimal-R1").value;
+                // Validacion con RegEx
+                if (
+                    /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(
+                        IPDecimal
+                    )
+                ) {
+                    document.getElementById("IPBinaria-R1").innerHTML =
+                        "IP Binaria: " + IPaBinario(IPDecimal);
+                } else {
+                    alert("1. IP Invalida");
+                }
+            }
+
+            // Subneteo por subredes
+            function Ex3() {
+                alert("YA, no se, no sirve y ahora odio JS")
+                // Variables
+                alert("Hola");
+                let IP = document.getElementById("IPDecimal-R2").value;
+                try {
+                    let NRedes = Number(
+                        document.getElementById("NumRedes-R2").value
+                    );
+                } catch {
+                    return alert("Numero de redes invalido");
+                }
+                let Mascara;
+                let m;
+                // Eleccion de mascara
+                if (IP.split(".")[1] == 0) {
+                    Mascara = "255.0.0.0";
+                    m = 12;
+                } else if (IP.split(".")[2] == 0) {
+                    Mascara = "255.255.0.0";
+                    m = 8;
+                } else if (IP.split(".")[3] == 0) {
+                    Mascara = "255.255.255.0";
+                    m = 4;
+                }
+                let BinMascara = IPaBinario(Mascara);
+                // Indice donde inician los octetos de Host
+                let IMascara = BinMascara.indexOf("0");
+
+                if (
+                    /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(
+                        IP
+                    )
+                ) {
+                    console.log("Pues va bien");
+                } else {
+                    alert("3. IP Invalida");
+                }
+                // Obtencion de n y ajuste de m
+                let n = 0;
+                while (true) {
+                    if (2 ** n >= NRedes) {
+                        break;
+                    }
+                }
+                m -= n;
+
+                let NHost = 2 ** m - 2;
+                // Obtencion de la nueva mascara en Binario
+                for (let i = 0; i < n; i++) {
+                    BinMascara[IMascara + i] = "1";
+                }
+
+                // Obtener el salto de red
+                let Salto =
+                    256 -
+                    Number(
+                        BinarioaDecimal(BinMascara[(IMascara, IMascara + 8)])
+                    );
+
+                // Crear tabla
+
+                let valor = 0;
+                for (let i = 0; i < 2 ** n; i++) {
+                    insersion = "<tr>";
+                    terminaion = "</tr>";
+                    let inicial = [IP.subString(0, IP.indexOf(".")) + "."];
+                    let final = [];
+
+                    document.getElementById("TablaEx3").innerHTML += insersion;
+                }
+            }
+        </script>
+    </body>
+</html>
